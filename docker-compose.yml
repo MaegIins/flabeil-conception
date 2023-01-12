@@ -1,0 +1,32 @@
+version: "3"
+
+networks:
+  catamongo.net:
+    driver: bridge
+services:
+  php:
+    image: canals/php:8.0
+    ports:
+      - "12080:80"
+      - "12443:443"
+    volumes:
+      - ./public:/var/www/html
+      - ./src:/var/www/src
+    working_dir: /var/www/src
+    networks:
+      - catamongo.net
+  mongo:
+    image: mongo:latest
+    volumes:
+      - ./data:/var/data
+    working_dir: /var/data
+    networks:
+      - catamongo.net
+    ports:
+      - 27017:27017
+  mongo-express:
+    image: mongo-express:latest
+    networks:
+      - catamongo.net
+    ports:
+      - "8081:8081"
