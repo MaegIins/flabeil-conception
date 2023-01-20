@@ -1,5 +1,4 @@
 <?php
-// Code source permettant d'accéder aux données parking du Grand Nancy
 require __DIR__ . '/vendor/autoload.php';
 
 $m = new MongoDB\Client('mongodb://mongo');
@@ -8,20 +7,21 @@ $collection = $db->selectCollection('flowers');
 
 include("index.html");
 
-// Décommenter et lancer la page une fois pour créer les entrées bdd, puis recommenter et relancer la page
-//include("db-filler.php");
+if ($collection->count() == 0){
+  include ("db-filler.php");
+}
 
 ?>
 <script>
   // Map, start position and zoom level
-  var map = L.map("map").setView([48.66, 6.155], 15);
+  var map = L.map("map").setView([48.66, 6.155], 16);
   // Limit of map
   map.setMaxBounds([
     [48.664218, 6.150820],
     [48.657579, 6.159649]
   ]);
   // Minimal zoom level
-  map.setMinZoom(14);
+  map.setMinZoom(16);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution:
@@ -62,7 +62,6 @@ collection.forEach(function (doc) {
  
   let colorIcon = icons[doc.id % 6];
 
-  // id nom_lat	nom_fr	hauteur	nectar	pollen	miellat	flor_coul	empl_jardin
     L.marker([doc.x_coord, doc.y_coord], {icon: colorIcon})
     .addTo(map)
     .bindPopup(
@@ -77,6 +76,5 @@ collection.forEach(function (doc) {
       "<b>Emplacement</b>: " + doc.empl_jardin + "<br>"
     )
 });
-
 
 </script>
