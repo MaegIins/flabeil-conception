@@ -38,4 +38,15 @@ class MainController
         $rs->getBody()->write($html);
         return $rs;  
     }
+
+    public function flower(Request $rq, Response $rs, array $args): Response
+    {
+        $db = $this->container->get('db');
+        $collection = $db->selectCollection('flowers');
+        $flower = $collection->findOne(['id_flower' => ((int)$args['id_flower'])]);
+        $vue = new MainView([$flower], $this->container);
+        $html = $vue->render(3);
+        $rs->getBody()->write($html);
+        return $rs;  
+    }
 }

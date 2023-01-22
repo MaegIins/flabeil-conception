@@ -55,13 +55,12 @@ class MainView {
                 </style>
 				<body>
 					<header class="header bg-dark">
-                        <!-- a logo on the left and a profil icon on the right -->
-                        <div class="row">
-                            <div class="col-10">
-                                <img src="./assets/LogoFlabeil.png" alt="logo" height="100">
+                        <div class="row w-100" style="height: 5rem;">
+                            <div class="col-10 h-100">
+                                <a href="/"><img src="/assets/LogoFlabeil.png" alt="logo" class="h-100 p-2"></a>
                             </div>
-                            <div class="col-2">
-                                <img src="https://www.pngitem.com/pimgs/m/508-5087236_tab-profile-f-user-icon-white-fill-hd.png" alt="logo" height="50">
+                            <div class="col-2 h-100 d-flex justify-content-center align-items-center">
+                                <img src="/assets/profil_icon.png" alt="logo" class="h-75">
                             </div>
                         </div>
                     </header>
@@ -101,78 +100,60 @@ HTML;
                         iconSize: [25, 41]
                         });
                 
-                        collection.forEach(function (doc) {
-                        
+                        collection.forEach(function (doc) {                        
                             L.marker([doc.x_coord, doc.y_coord], {icon: redMarker})
                             .addTo(map)
                             .bindPopup(
-                            "<b>id</b>: " + doc.id + "<br>" +
-                            "<b>Nom Latin</b>: " + doc.nom_lat + "<br>" +
-                            "<b>Nom Français</b>: " + doc.nom_fr + "<br>" +
-                            "<b>Hauteur</b>: " + doc.hauteur + "<br>" +
-                            "<b>Nectar</b>: " + doc.nectar + "<br>" +
-                            "<b>Pollen</b>: " + doc.pollen + "<br>" +
-                            "<b>Miellat</b>: " + doc.miellat + "<br>" +
-                            "<b>Couleurs / Floraison</b>: " + doc.flor_coul + "<br>" +
-                            "<b>Emplacement</b>: " + doc.empl_jardin + "<br>"
-                            )
+                            "<h5>"+doc.nom_fr+"</h5>"
+                            +"<div class='d-flex flex-column align-items-center'>"
+                            +"<a href='/flowers/"+doc.id_flower+"'>Voir la fiche</a>"
+                            +"<br><img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://localhost:8080/flowers/"+doc.id_flower+"' alt='QR code' width=' 70rem'>"
+                            +"</div>"
+                            );
                         });
                     </script>
 HTML;
-$url_controller = $this->container->router->pathFor('scanner_QRcode');
         return <<<HTML
 			    <div id="map" style="height: 80vh; width: 100vw"></div>
-       
-			<form method="post" action="$url_controller">
-				<input type="submit" name="submit" value="Rafraîchir">
-			</form>
 HTML;
     }
 
     private function flower() : string {
+        $flower = $this->tab[0];
         return <<<HTML
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 bg-black text-white py-2">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <img class="m-1" src="logo.png" alt="Logo" style="width: 40px; height: 40px;">
-                            <h1 class="m-1">Flabeil</h1>
-                            <i class="fas fa-user text-white m-1"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container my-5">
+            <div class="container my-3">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <img src="plant.jpg" alt="Plant image" class="img-fluid">
-                        <div class="my-3">
-                            <h2>Nom Latin : </h2>
-                            <p>AAAAA</p>
-                            <h2>Nom FranÃ§ais</h2>
-                            <p>AAAAA</p>
-                            <h2>Hauteur</h2>
-                            <p>AAAAA</p>
-                            <h2>Floraison Couleur</h2>
-                            <p>AAAAA</p>
-                            <h2>Emplacement jardin</h2>
-                            <p>AAAAA</p>
+                        <img src="/assets/img/$flower->photo" alt="Photo de la fleur" class="img-fluid w-100">
+                        <div class="mt-3">
+                            <h4>Nom Latin : </h4>
+                            <p>$flower->nom_lat</p>
+                            <h4>Nom Français</h4>
+                            <p>$flower->nom_fr</p>
+                            <h4>Hauteur</h4>
+                            <p>$flower->hauteur</p>
+                            <h4>Floraison Couleur</h4>
+                            <p>$flower->flor_coul</p>
+                            <h4>Emplacement jardin</h4>
+                            <p>$flower->empl_jardin</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="collectionPoint">
+            <div class="collectionPoint mx-3 mb-3">
                 <hr style="border-top: 1px solid black;">
                 <div class="row">
                     <div class="col-4 text-center">
-                        <h3>Miellat : 0</h3>
+                        <h5>Miellat</h5> 
+                        <p>$flower->miellat</p>
                     </div>
                     <div class="col-4 text-center">
-                        <h3>Pollen : 2</h3>
+                        <h5>Pollen</h5>
+                        <p>$flower->pollen</p>
                     </div>
                     <div class="col-4 text-center">
-                        <h3>Nectar : 0</h3>
+                        <h5>Nectar</h5>
+                        <p>$flower->nectar</p>
                     </div>
                 </div>
             </div>

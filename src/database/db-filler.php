@@ -5,9 +5,9 @@ $db = (new MongoDB\Client('mongodb://mongo'))->selectDatabase('flabeilDB');
 $db->createCollection('flowers');
 $db = $db->selectCollection('flowers');
 
-  $flowers[] =
+    $flowers[] =
     [
-      'id'=> 1,
+      'id_flower'=> 1,
       'x_coord'=> 48.661263,
       'y_coord'=> 6.154048,
       'nom_lat'=> 'Acer campestris',
@@ -18,10 +18,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> 'M',
       'flor_coul'=> ',avril,mai,vert clair',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'acer_campestre.jpg'
     ];
-    $flowers[] = [
-      'id'=> 2,
+    $flowers[] =
+    [
+      'id_flower'=> 2,
       'x_coord'=> 48.659963,
       'y_coord'=> 6.156221,
       'nom_lat'=> 'Acer pseudoplatanus',
@@ -32,10 +33,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'mai,jaunâtre',
       'empl_jardin'=> 'forêt',
-      'photo'=> ''
+      'photo'=> 'acer_pseudoplatanus.jpg'
     ];
-    $flowers[] = [
-      'id'=> 3,
+    $flowers[] =
+    [
+      'id_flower'=> 3,
       'x_coord'=> 48.662204,
       'y_coord'=> 6.155286,
       'nom_lat'=> 'Alnus glutinosa',
@@ -46,10 +48,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> 'M',
       'flor_coul'=> 'mars avril,jaune',
       'empl_jardin'=> 'étang',
-      'photo'=> ''
+      'photo'=> 'alnus_glutinosa.jpg'
     ];
-    $flowers[] = [
-      'id'=> 4,
+    $flowers[] =
+    [
+      'id_flower'=> 4,
       'x_coord'=> 48.661444,
       'y_coord'=> 6.153969,
       'nom_lat'=> 'Aquilegia vulgaris',
@@ -60,10 +63,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'mai,juin bleu',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'aquilegia_vulgaris.jpg'
     ];
-    $flowers[] = [
-      'id'=> 5,
+    $flowers[] =
+    [
+      'id_flower'=> 5,
       'x_coord'=> 48.66108,
       'y_coord'=> 6.154309,
       'nom_lat'=> 'Asclépias syriaca',
@@ -74,10 +78,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,août mauve',
       'empl_jardin'=> 'collection ornementale',
-      'photo'=> ''
+      'photo'=> 'asclepias_syriaca.jpg'
     ];
-    $flowers[] = [
-      'id'=> 6,
+    $flowers[] =
+    [
+      'id_flower'=> 6,
       'x_coord'=> 48.66112,
       'y_coord'=> 6.154344,
       'nom_lat'=> 'Berberis vulgaris',
@@ -88,10 +93,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> ',juin,juillet,jaune',
       'empl_jardin'=> 'secteur arboretum Chine',
-      'photo'=> ''
+      'photo'=> 'berberis_vulgaris.jpg'
     ];
-    $flowers[] = [
-      'id'=> 7,
+    $flowers[] =
+    [
+      'id_flower'=> 7,
       'x_coord'=> 48.661363,
       'y_coord'=> 6.154031,
       'nom_lat'=> 'Borago officinalis',
@@ -102,10 +108,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,août,bleu tendre',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'borago_officinalis.jpg'
     ];
-    $flowers[] = [
-      'id'=> 8,
+    $flowers[] =
+    [
+      'id_flower'=> 8,
       'x_coord'=> 48.661634,
       'y_coord'=> 6.15427,
       'nom_lat'=> 'brassica arvensis',
@@ -116,10 +123,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,août jaune',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'brassica_arvensis.jpg'
     ];
-    $flowers[] = [
-      'id'=> 9,
+    $flowers[] =
+    [
+      'id_flower'=> 9,
       'x_coord'=> 48.659513,
       'y_coord'=> 6.155451,
       'nom_lat'=> 'Calluna vulgaris',
@@ -130,10 +138,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'août,blanc,rose',
       'empl_jardin'=> 'secteur terre de bruyère',
-      'photo'=> ''
+      'photo'=> 'calluna_vulgaris.jpg'
     ];
-    $flowers[] = [
-      'id'=> 10,
+    $flowers[] =
+    [
+      'id_flower'=> 10,
       'x_coord'=> 48.661911,
       'y_coord'=> 6.157033,
       'nom_lat'=> 'Corylus colurna',
@@ -144,10 +153,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'fevrier,mars,jaune',
       'empl_jardin'=> 'secteur arboretum Europe',
-      'photo'=> ''
+      'photo'=> 'corylus_colurna.jpg'
     ];
-    $flowers[] = [
-      'id'=> 11,
+    $flowers[] =
+    [
+      'id_flower'=> 11,
       'x_coord'=> 48.660346,
       'y_coord'=> 6.156125,
       'nom_lat'=> 'Cotoneaster horizontalis',
@@ -158,10 +168,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,rose',
       'empl_jardin'=> 'arboretum,secteur chine',
-      'photo'=> ''
+      'photo'=> 'cotoneaster_horizontalis.jpg'
     ];
-    $flowers[] = [
-      'id'=> 12,
+    $flowers[] =
+    [
+      'id_flower'=> 12,
       'x_coord'=> 48.662252,
       'y_coord'=> 6.155973,
       'nom_lat'=> 'Crocus vernus',
@@ -172,10 +183,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'fevrier,mars toutes couleurs',
       'empl_jardin'=> 'pelouses',
-      'photo'=> ''
+      'photo'=> 'crocus_vernus.jpg'
     ];
-    $flowers[] = [
-      'id'=> 13,
+    $flowers[] =
+    [
+      'id_flower'=> 13,
       'x_coord'=> 48.661923,
       'y_coord'=> 6.155104,
       'nom_lat'=> 'Dalhia variabilis',
@@ -186,10 +198,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juillet,août,septembre toutes couleurs',
       'empl_jardin'=> 'collection de dahlias',
-      'photo'=> ''
+      'photo'=> 'dalhia_variabilis.jpg'
     ];
-    $flowers[] = [
-      'id'=> 14,
+    $flowers[] =
+    [
+      'id_flower'=> 14,
       'x_coord'=> '',
       'y_coord'=> '',
       'nom_lat'=> 'Epilobium angustifolium',
@@ -200,10 +213,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juillet,août rose',
       'empl_jardin'=> 'ruisseau',
-      'photo'=> ''
+      'photo'=> 'epilobium_angustifolium.JPG'
     ];
-    $flowers[] = [
-      'id'=> 15,
+    $flowers[] =
+    [
+      'id_flower'=> 15,
       'x_coord'=> 48.661503,
       'y_coord'=> 6.154044,
       'nom_lat'=> 'Fagopyrum esculentum',
@@ -214,10 +228,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,août blanc',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'fagopyrum_esculentum.jpeg'
     ];
-    $flowers[] = [
-      'id'=> 16,
+    $flowers[] =
+    [
+      'id_flower'=> 16,
       'x_coord'=> 48.661718,
       'y_coord'=> 6.15715,
       'nom_lat'=> 'Fraxinus ornus',
@@ -228,10 +243,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'mai, juin blanche',
       'empl_jardin'=> 'secteur arboretum Europe',
-      'photo'=> ''
+      'photo'=> 'fraxinus_ornus.jpg'
     ];
-    $flowers[] = [
-      'id'=> 17,
+    $flowers[] =
+    [
+      'id_flower'=> 17,
       'x_coord'=> 48.662158,
       'y_coord'=> 6.157476,
       'nom_lat'=> 'Gleditsia triacanthos',
@@ -242,10 +258,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,jaune,vertearboretum secteur Amérique du nord',
       'empl_jardin'=> '',
-      'photo'=> ''
+      'photo'=> 'gleditsia_triacanthos.jpg'
     ];
-    $flowers[] = [
-      'id'=> 18,
+    $flowers[] =
+    [
+      'id_flower'=> 18,
       'x_coord'=> 48.659248,
       'y_coord'=> 6.153968,
       'nom_lat'=> 'Hedera helix',
@@ -256,10 +273,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'septembre, octobre',
       'empl_jardin'=> 'vert tendre,forêt',
-      'photo'=> ''
+      'photo'=> 'hedera_helix.jpg'
     ];
-    $flowers[] = [
-      'id'=> 19,
+    $flowers[] =
+    [
+      'id_flower'=> 19,
       'x_coord'=> 48.660986,
       'y_coord'=> 6.153347,
       'nom_lat'=> 'Lavandula officinale',
@@ -270,10 +288,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juillet,août,bleu lilas',
       'empl_jardin'=> 'potager',
-      'photo'=> ''
+      'photo'=> 'lavande_officinale.jpg'
     ];
-    $flowers[] = [
-      'id'=> 20,
+    $flowers[] =
+    [
+      'id_flower'=> 20,
       'x_coord'=> 48.660825,
       'y_coord'=> 6.156621,
       'nom_lat'=> 'Lonicera tartarica',
@@ -284,10 +303,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'mai,juin,blanc',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'lonicera_tartarica.jpg'
     ];
-    $flowers[] = [
-      'id'=> 21,
+    $flowers[] =
+    [
+      'id_flower'=> 21,
       'x_coord'=> 48.661293,
       'y_coord'=> 6.153911,
       'nom_lat'=> 'Médicago sativa',
@@ -298,10 +318,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,août mauve',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'medicago_sativa.jpg'
     ];
-    $flowers[] = [
-      'id'=> 22,
+    $flowers[] =
+    [
+      'id_flower'=> 22,
       'x_coord'=> 48.661395,
       'y_coord'=> 6.153903,
       'nom_lat'=> 'Phacelia tanacetifolia',
@@ -312,10 +333,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juillet,oût,septembre jardin écologique bleu clair',
       'empl_jardin'=> 'potager écologique',
-      'photo'=> ''
+      'photo'=> 'phacelia_tanacetifolia.jpg'
     ];
-    $flowers[] = [
-      'id'=> 23,
+    $flowers[] =
+    [
+      'id_flower'=> 23,
       'x_coord'=> 48.660229,
       'y_coord'=> 6.156639,
       'nom_lat'=> 'Prunus avium',
@@ -326,10 +348,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> 'M',
       'flor_coul'=> 'avril,mai,blanche',
       'empl_jardin'=> 'forêt',
-      'photo'=> ''
+      'photo'=> 'prunus_avium.jpeg'
     ];
-    $flowers[] = [
-      'id'=> 24,
+    $flowers[] =
+    [
+      'id_flower'=> 24,
       'x_coord'=> '',
       'y_coord'=> '',
       'nom_lat'=> 'Prunus spinosa',
@@ -340,10 +363,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'avril,mai,blanc',
       'empl_jardin'=> 'roseraie',
-      'photo'=> ''
+      'photo'=> 'prunus_spinosa.jpg'
     ];
-    $flowers[] = [
-      'id'=> 25,
+    $flowers[] =
+    [
+      'id_flower'=> 25,
       'x_coord'=> 48.66291,
       'y_coord'=> 6.155547,
       'nom_lat'=> 'Pyracantha coccinéa',
@@ -354,10 +378,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> ',juin,juillet,blanc',
       'empl_jardin'=> 'roseraie',
-      'photo'=> ''
+      'photo'=> 'pyracantha_coccinea.jpg'
     ];
-    $flowers[] = [
-      'id'=> 26,
+    $flowers[] =
+    [
+      'id_flower'=> 26,
       'x_coord'=> 48.66218,
       'y_coord'=> 6.155799,
       'nom_lat'=> 'Robinia pseudoacacia',
@@ -367,11 +392,12 @@ $db = $db->selectCollection('flowers');
       'pollen'=> 2,
       'miellat'=> '',
       'flor_coul'=> 'juin,blanche',
-      'empl_jardin'=> 'étang pavillon daccueil',
-      'photo'=> ''
+      'empl_jardin'=> 'étang pavillon d\'accueil',
+      'photo'=> 'robinia_pseudoacacia.jpg'
     ];
-    $flowers[] = [
-      'id'=> 27,
+    $flowers[] =
+    [
+      'id_flower'=> 27,
       'x_coord'=> 48.660979,
       'y_coord'=> 6.154249,
       'nom_lat'=> 'Rudbeckia laciniata',
@@ -382,10 +408,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juillet août jaune',
       'empl_jardin'=> 'collection historique ornementale',
-      'photo'=> ''
+      'photo'=> 'rudbeckia_laciniata.jpg'
     ];
-    $flowers[] = [
-      'id'=> 28,
+    $flowers[] =
+    [
+      'id_flower'=> 28,
       'x_coord'=> '',
       'y_coord'=> '',
       'nom_lat'=> 'Salix capréa',
@@ -396,24 +423,26 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'mars avril,jaune,vert',
       'empl_jardin'=> 'ruisseau',
-      'photo'=> ''
+      'photo'=> 'salix_caprea.jpg'
     ];
-    $flowers[] = [
-      'id'=> 29,
+    $flowers[] =
+    [
+      'id_flower'=> 29,
       'x_coord'=> 48.66122,
       'y_coord'=> 6.153894,
       'nom_lat'=> 'Solidago virgaurea',
-      'nom_fr'=> 'verge dor',
+      'nom_fr'=> 'verge d\'or',
       'hauteur'=> '1.50m',
       'nectar'=> 2,
       'pollen'=> 2,
       'miellat'=> '',
       'flor_coul'=> 'août,septembre,octobre jaune',
       'empl_jardin'=> 'collection historique',
-      'photo'=> ''
+      'photo'=> 'solidago_virgaurea.jpg'
     ];
-    $flowers[] = [
-      'id'=> 30,
+    $flowers[] =
+    [
+      'id_flower'=> 30,
       'x_coord'=> 48.662458,
       'y_coord'=> 6.157181,
       'nom_lat'=> 'Sophora japonica',
@@ -424,10 +453,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'août,septembre,blanc crème',
       'empl_jardin'=> '',
-      'photo'=> ''
+      'photo'=> 'sophora_japonica.jpg'
     ];
-    $flowers[] = [
-      'id'=> 31,
+    $flowers[] =
+    [
+      'id_flower'=> 31,
       'x_coord'=> 48.660814,
       'y_coord'=> 6.154629,
       'nom_lat'=> 'Taraxacum officinalis',
@@ -438,10 +468,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'avril,mai,juin,juillet jaune',
       'empl_jardin'=> 'pelouse prairie',
-      'photo'=> ''
+      'photo'=> 'taraxacum_officinale.jpg'
     ];
-    $flowers[] = [
-      'id'=> 32,
+    $flowers[] =
+    [
+      'id_flower'=> 32,
       'x_coord'=> 48.661993,
       'y_coord'=> 6.154415,
       'nom_lat'=> 'Thymus vulgaris',
@@ -452,10 +483,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,juillet,août,mauve',
       'empl_jardin'=> 'jardin écologique,potager',
-      'photo'=> ''
+      'photo'=> 'thymus_vulgaris.JPG'
     ];
-    $flowers[] = [
-      'id'=> 33,
+    $flowers[] =
+    [
+      'id_flower'=> 33,
       'x_coord'=> 48.661908,
       'y_coord'=> 6.155647,
       'nom_lat'=> 'Tilia henryana',
@@ -465,11 +497,12 @@ $db = $db->selectCollection('flowers');
       'pollen'=> 2,
       'miellat'=> '',
       'flor_coul'=> ',septembre,jaunâtre',
-      'empl_jardin'=> 'étang pavillon daccueil',
-      'photo'=> ''
+      'empl_jardin'=> 'étang pavillon d\'accueil',
+      'photo'=> 'tilia_henryana.jpg'
     ];
-    $flowers[] = [
-      'id'=> 34,
+    $flowers[] =
+    [
+      'id_flower'=> 34,
       'x_coord'=> 48.662386,
       'y_coord'=> 6.156995,
       'nom_lat'=> 'Tilia platyphillos',
@@ -480,10 +513,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'juin,janâtre',
       'empl_jardin'=> 'parcelle Emile Gallé',
-      'photo'=> ''
+      'photo'=> 'tilia_platyphyllos.jpg'
     ];
-    $flowers[] = [
-      'id'=> 35,
+    $flowers[] =
+    [
+      'id_flower'=> 35,
       'x_coord'=> '',
       'y_coord'=> '',
       'nom_lat'=> 'Trifolium repens',
@@ -494,10 +528,11 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'mai,juin,juillet,août,septembre',
       'empl_jardin'=> 'pelouse',
-      'photo'=> ''
+      'photo'=> 'trifolium_repens.jpg'
     ];
-    $flowers[] = [
-      'id'=> 36,
+    $flowers[] =
+    [
+      'id_flower'=> 36,
       'x_coord'=> 48.6618,
       'y_coord'=> 6.157049,
       'nom_lat'=> 'Vinca minor',
@@ -508,7 +543,7 @@ $db = $db->selectCollection('flowers');
       'miellat'=> '',
       'flor_coul'=> 'mars, avril bleu',
       'empl_jardin'=> 'arboretum',
-      'photo'=> ''
+      'photo'=> 'vinca_minor.jpg'
     ];
   
 

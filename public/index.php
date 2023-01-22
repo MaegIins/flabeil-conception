@@ -21,9 +21,13 @@ $container = new Container ([
 $app = new App($container);
 
 $app->get('/', MainController::class . ':map')->setName('map');
-$app->get('/collection', MainController::class . ':collection')->setName('collection');
+$app->get('/collection[/]', MainController::class . ':collection')->setName('collection');
 $app->get('/scanner_QR[/]', MainController::class . ':lecture_qr')->setName('scanner_QRcode');
-
+$app->get('/flowers/{id_flower}[/]', 
+function ($rq, $rs, $args) {
+    $c = new MainController($this);
+    return $c->flower($rq, $rs, $args);
+})->setName('flower_details');
 
 try {
   $app->run();
