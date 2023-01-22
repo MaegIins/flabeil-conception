@@ -10,6 +10,7 @@ services:
       - "12080:80"
       - "12443:443"
     volumes:
+      - .:/var/www
       - ./public:/var/www/html
       - ./src:/var/www/src
     working_dir: /var/www/src

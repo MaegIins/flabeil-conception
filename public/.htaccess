@@ -1,0 +1,12 @@
+RewriteEngine On
+#
+# RewriteBase indispensable sur webetu :
+
+# RewriteBase /www/grolet4u/litra
+
+#
+# réécriture pour slim
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
