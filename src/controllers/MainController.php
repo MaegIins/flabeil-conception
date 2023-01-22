@@ -21,11 +21,15 @@ class MainController
     public function map(Request $rq, Response $rs, array $args): Response
     {
         $db = $this->container->get('db');
-        $collection = $db->selectCollection('flowers');
-        if ($collection->count() == 0) {
-            include '../src/database/db-filler.php';
+        $flowers = $db->selectCollection('flowers');
+        if ($flowers->count() == 0) {
+            include '../src/database/db-filler-flowers.php';
         }
-        $vue = new MainView([$collection->find()->toArray()], $this->container);
+        $hives = $db->selectCollection('hives');
+        if ($hives->count() == 0) {
+            include '../src/database/db-filler-hives.php';
+        }
+        $vue = new MainView([$flowers->find()->toArray(), $hives->find()->toArray()], $this->container);
         $html = $vue->render(0);
         $rs->getBody()->write($html);
         return $rs;    

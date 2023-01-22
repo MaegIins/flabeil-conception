@@ -75,11 +75,16 @@ HTML;
 
     private function map(): string
     {
-        $collection = json_encode($this->tab[0]);
+        $flowers = json_encode($this->tab[0]);
+        $hives = json_encode($this->tab[1]);
+        var_dump($flowers);
+        var_dump($hives);
+
         $this->footerScripts = <<<HTML
                     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"></script>
                     <script>
-                        var collection = $collection;
+                        var flowers = $flowers;
+                        var hives = $hives;
                             // Map, start position and zoom level
                         var map = L.map("map").setView([48.66, 6.155], 16);
                         // Limit of map
@@ -95,13 +100,18 @@ HTML;
                             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
                         }).addTo(map);
 
-                        let redMarker = L.icon({
-                        iconUrl: "https://github.com/pointhi/leaflet-color-markers/blob/master/img/marker-icon-red.png?raw=true",
-                        iconSize: [25, 41]
+                        let flowerMarker = L.icon({
+                        iconUrl: "/assets/fleur.png",
+                        iconSize: [35, 41]
+                        });
+
+                        let hiveMarker = L.icon({
+                        iconUrl: "/assets/ruche.png",
+                        iconSize: [35, 41]
                         });
                 
-                        collection.forEach(function (doc) {                        
-                            L.marker([doc.x_coord, doc.y_coord], {icon: redMarker})
+                        flowers.forEach(function (doc) {                        
+                            L.marker([doc.x_coord, doc.y_coord], {icon: flowerMarker})
                             .addTo(map)
                             .bindPopup(
                             "<h5>"+doc.nom_fr+"</h5>"
@@ -110,6 +120,11 @@ HTML;
                             +"<br><img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://localhost:8080/flowers/"+doc.id_flower+"' alt='QR code' width=' 70rem'>"
                             +"</div>"
                             );
+                        });
+
+                        hives.forEach(function (doc) {                        
+                            L.marker([doc.x_coord, doc.y_coord], {icon: hiveMarker})
+                            .addTo(map)
                         });
                     </script>
 HTML;

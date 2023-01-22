@@ -545,7 +545,6 @@ $db = $db->selectCollection('flowers');
       'empl_jardin'=> 'arboretum',
       'photo'=> 'vinca_minor.jpg'
     ];
-  
 
 if (count($flowers) > 0) {
   $res = $db->insertMany($flowers);
