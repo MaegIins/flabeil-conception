@@ -37,7 +37,9 @@ class MainController
 
     public function collection(Request $rq, Response $rs, array $args): Response
     {
-        $vue = new MainView([], $this->container);
+        $db = $this->container->get('db');
+        $collection = $db->selectCollection('flowers');
+        $vue = new MainView([$collection->find()->toArray()], $this->container);
         $html = $vue->render(1);
         $rs->getBody()->write($html);
         return $rs;  

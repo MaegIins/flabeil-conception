@@ -79,15 +79,15 @@ HTML;
     private function header() : string {
         return <<<HTML
         <header class="header bg-dark">
-                        <div class="row w-100" style="height: 5rem;">
-                            <div class="col-10 h-100">
-                                <a href="/"><img src="/assets/LogoFlabeil.png" alt="logo" class="h-100 p-2"></a>
-                            </div>
-                            <div class="col-2 h-100 d-flex justify-content-center align-items-center">
-                                <img src="/assets/profil_icon.png" alt="logo" class="h-75">
-                            </div>
-                        </div>
-                    </header>
+            <div class="row w-100" style="height: 5rem;">
+                <div class="col-10 h-100">
+                    <a href="/"><img src="/assets/LogoFlabeil.png" alt="logo" class="h-100 p-2"></a>
+                </div>
+                <a href="createaccount" class="col-2 h-100 d-flex justify-content-center align-items-center">
+                    <img src="/assets/profil_icon.png" alt="logo" class="h-75">
+                </a>
+            </div>
+        </header>
 HTML;
     }
 
@@ -180,6 +180,45 @@ HTML;
         return <<<HTML
 			    <div id="map" style="height: 80vh; width: 100vw"></div>
 HTML;
+    }
+
+    public function collection() : string {
+        $flowers = $this->tab[0];
+
+        $res = <<<HTML
+        <div class="container-fluid">
+            <div class="row">
+            <div class="col-12 bg-black text-white py-2">
+                <div class="d-flex align-items-center justify-content-between">
+                <h1 class="m-1">Flabeil</h1>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+HTML;
+
+        foreach ($flowers as $flower) {
+            $res .= <<<HTML
+                <div class="col-6">
+                    <div class="card">
+                    <img src="/assets/img/$flower->photo" class="card-img-top img-fluid" alt="Photo de la fleur">
+                    <div class="card-body">
+                        <h5 class="card-title
+                        ">Nom Latin : $flower->nom_lat</h5>
+                        <p class="card-text">Nom Français : $flower->nom_fr</p>
+                    </div>
+                    </div>
+                </div>
+HTML;
+}
+
+        $res .= <<<HTML
+            </div>
+HTML;
+
+        return $res;
     }
 
     private function flower(): string
@@ -306,14 +345,6 @@ button {
   outline: none;
   background: none;
   text-decoration: none;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .container {
@@ -479,10 +510,7 @@ img {
 }/*# sourceMappingURL=styleUser.css.map */
 </style>
     
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
-
-    </head>
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css"> -->
 <main class="main">
 	<div class="container">
 		<section class="wrapper">
@@ -533,7 +561,6 @@ img {
 		</section>
 	</div>
 </main>
-</body>
 HTML;
     }
 }
