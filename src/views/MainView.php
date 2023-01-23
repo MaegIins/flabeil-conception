@@ -18,6 +18,8 @@ class MainView {
 
     public function render($selector): string
     {
+        $style = $this->style();
+        $header = $this->header();
         $content = match ($selector) {
             0 => $this->map(),
             1 => $this->collection(),
@@ -25,6 +27,7 @@ class MainView {
             3 => $this->flower(),
             default => "selector inconnu de render",
         };
+        $navBar = $this->navbar();
 
         return <<<HTML
 			<!DOCTYPE html>
@@ -39,22 +42,41 @@ class MainView {
                     href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
                 />
                 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-                <style> 
-                    .container-fluid.bg-white .col-4 {
-                        border: 2px solid #FECE44;
-                        background-color: #F9E79F;
-                    }
-
-                    .collectionPoint {
-                        margin-bottom: 10%;
-                    }
-
-                    svg{
-                        height: 50%;
-                    }
-                </style>
+                $style
 				<body>
-					<header class="header bg-dark">
+					$header
+                    $content
+                    $navBar
+				</body>
+                <footer>
+                    $this->footerScripts
+                </footer>
+			</html>
+HTML;
+    }
+
+    private function style() : string {
+        return <<<HTML
+        <style> 
+            .container-fluid.bg-white .col-4 {
+                border: 2px solid #FECE44;
+                background-color: #F9E79F;
+            }
+
+            .collectionPoint {
+                margin-bottom: 10%;
+            }
+
+            svg{
+                height: 50%;
+            }
+        </style>
+HTML;
+    }
+
+    private function header() : string {
+        return <<<HTML
+        <header class="header bg-dark">
                         <div class="row w-100" style="height: 5rem;">
                             <div class="col-10 h-100">
                                 <a href="/"><img src="/assets/LogoFlabeil.png" alt="logo" class="h-100 p-2"></a>
@@ -64,12 +86,37 @@ class MainView {
                             </div>
                         </div>
                     </header>
-						$content
-				</body>
-                <footer>
-                    $this->footerScripts
-                </footer>
-			</html>
+HTML;
+    }
+
+    private function navBar() : string {
+        $collectionUrl = $this->container->router->pathFor('collection');
+        return <<<HTML
+        <div class="container-fluid bg-white fixed-bottom" >
+                        <div class="row" style="height:5rem;">
+                            <a href="/collection" class="col-4 text-center py-3 h-100 text-decoration-none text-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path
+                                        d="M416 0H32C14.3 0 0 14.3 0 32v448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32zM32 32h384v448H32V32zm320 96H96v32h256V128zm0 64H96v32h256v-32zm0 64H96v32h256v-32zm0 64H96v32h256v-32z" />
+                                </svg>
+                                <p class="my-2">Collection</p>
+                            </a>
+                            <a href="/lecture_qr" class="col-4 text-center py-3 h-100 text-decoration-none text-dark">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                    <path
+                                        d="M48 32C21.5 32 0 53.5 0 80v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm80 64v64H64V96h64zM48 288c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48zm80 64v64H64V352h64zM256 80v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H304c-26.5 0-48 21.5-48 48zm64 16h64v64H320V96zm32 352v32h32V448H352zm96 0H416v32h32V448zM416 288v32H352V288H256v96 96h64V384h32v32h96V352 320 288H416z" />
+                                </svg>
+                                <p class="my-2">QR Code</p>
+                            </a>
+                            <div class="col-4 text-center py-3 h-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path
+                                        d="M256 512C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256s-114.6 256-256 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
+                                </svg>
+                                <p class="my-2">Horloge</p>
+                            </div>
+                        </div>
+                    </div>
 HTML;
     }
 
@@ -167,44 +214,6 @@ HTML;
                     <div class="col-4 text-center">
                         <h5>Nectar</h5>
                         <p>$flower->nectar</p>
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-
-
-            <div class="container-fluid bg-white fixed-bottom" >
-                <div class="row" style="height:10rem;">
-                    <div class="col-4 text-center py-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                            <path
-                                d="M384 476.1L192 421.2V35.9L384 90.8V476.1zm32-1.2V88.4L543.1 37.5c15.8-6.3 32.9 5.3 32.9 22.3V394.6c0 9.8-6 18.6-15.1 22.3L416 474.8zM15.1 95.1L160 37.2V423.6L32.9 474.5C17.1 480.8 0 469.2 0 452.2V117.4c0-9.8 6-18.6 15.1-22.3z" />
-                        </svg>
-                        <p class="my-2">Carte</p>
-                    </div>
-                    <div class="col-4 text-center py-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                            <path
-                                d="M48 32C21.5 32 0 53.5 0 80v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H48zm80 64v64H64V96h64zM48 288c-26.5 0-48 21.5-48 48v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V336c0-26.5-21.5-48-48-48H48zm80 64v64H64V352h64zM256 80v96c0 26.5 21.5 48 48 48h96c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48H304c-26.5 0-48 21.5-48 48zm64 16h64v64H320V96zm32 352v32h32V448H352zm96 0H416v32h32V448zM416 288v32H352V288H256v96 96h64V384h32v32h96V352 320 288H416z" />
-                        </svg>
-                        <p class="my-2">QR Code</p>
-                    </div>
-                    <div class="col-4 text-center py-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path
-                                d="M256 512C114.6 512 0 397.4 0 256S114.6 0 256 0S512 114.6 512 256s-114.6 256-256 256zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" />
-                        </svg>
-                        <p class="my-2">Horloge</p>
                     </div>
                 </div>
             </div>
