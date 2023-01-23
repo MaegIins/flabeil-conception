@@ -22,6 +22,7 @@ $app = new App($container);
 
 $app->get('/', MainController::class . ':map')->setName('map');
 $app->get('/collection[/]', MainController::class . ':collection')->setName('collection');
+$app->get('/loginuser[/]', MainController::class . ':loginuser')->setName('loginuser');
 $app->get('/createaccount[/]', MainController::class . ':createaccount')->setName('createaccount');
 $app->get('/scanner_QR[/]', MainController::class . ':lecture_qr')->setName('scanner_QRcode');
 $app->get('/flowers/{id_flower}[/]', 

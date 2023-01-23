@@ -53,14 +53,20 @@ class MainController
         $rs->getBody()->write($html);
         return $rs;  
     }
-    public function createaccount(Request $rq, Response $rs, array $args): Response
+    public function loginuser(Request $rq, Response $rs, array $args): Response
     {
         $vue = new MainView([], $this->container);
         $html = $vue->render(4);
         $rs->getBody()->write($html);
         return $rs;  
     }
-
+    public function createaccount(Request $rq, Response $rs, array $args): Response
+    {
+        $vue = new MainView([], $this->container);
+        $html = $vue->render(5);
+        $rs->getBody()->write($html);
+        return $rs;  
+    }
 
     
 }
