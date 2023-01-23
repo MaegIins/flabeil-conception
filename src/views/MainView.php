@@ -50,7 +50,7 @@ class MainView {
                     }
 
                     svg{
-                        width: 10%;
+                        height: 50%;
                     }
                 </style>
 				<body>
@@ -139,19 +139,18 @@ HTML;
             <div class="container my-3">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <img src="/assets/img/$flower->photo" alt="Photo de la fleur" class="img-fluid w-100">
-                        <div class="mt-3">
-                            <h4>Nom Latin : </h4>
-                            <p>$flower->nom_lat</p>
-                            <h4>Nom Français</h4>
-                            <p>$flower->nom_fr</p>
-                            <h4>Hauteur</h4>
-                            <p>$flower->hauteur</p>
-                            <h4>Floraison Couleur</h4>
-                            <p>$flower->flor_coul</p>
-                            <h4>Emplacement jardin</h4>
-                            <p>$flower->empl_jardin</p>
+                        <div class="card">
+                            <img src="/assets/img/$flower->photo" alt="Photo de la fleur" class="card-img-top img-fluid w-100">
+                            <div class="card-body">
+                                <h4 class="card-title">Nom Latin : $flower->nom_lat</h4>
+                                <p class="card-text">Nom Français : $flower->nom_fr</p>
+                                <p class="card-text">Hauteur : $flower->hauteur</p>
+                                <p class="card-text">Floraison Couleur : $flower->flor_coul</p>
+                                <p class="card-text">Emplacement jardin : $flower->empl_jardin</p>
+                            </div>
                         </div>
+                        <br>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -174,8 +173,8 @@ HTML;
             </div>
 
 
-            <div class="container-fluid bg-white">
-                <div class="row">
+            <div class="container-fluid bg-white fixed-bottom" >
+                <div class="row" style="height:10rem;">
                     <div class="col-4 text-center py-3">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                             <path
