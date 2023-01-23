@@ -149,8 +149,7 @@ HTML;
                                 <p class="card-text">Emplacement jardin : $flower->empl_jardin</p>
                             </div>
                         </div>
-                        <br>
-                        <br>
+ 
                     </div>
                 </div>
             </div>
@@ -171,6 +170,17 @@ HTML;
                     </div>
                 </div>
             </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
 
 
             <div class="container-fluid bg-white fixed-bottom" >
